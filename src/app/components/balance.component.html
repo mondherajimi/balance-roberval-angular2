@@ -1,0 +1,24 @@
+<div class="balance">
+  <div class="balls">
+    <div class="ball"
+         *ngFor="let ball of balls"
+         [class.selected]="ball === selectedBall"
+         (click)="onSelect(ball)">
+      <span class="index">{{ball.index + 1}}</span>
+      <span class="weight">{{ball.weight}}k</span>
+    </div>
+  </div>
+  <img class="logo" src="images/balance.png" alt="logo">
+  <div class="row">
+    <div class="controls">
+      <button class="button run" (click)="findBall()">Executer</button>
+      <button class="button reset" (click)="reset()">Reset</button>
+    </div>
+  </div>
+  <div class="error" *ngIf="error">
+    {{error}}
+  </div>
+  <div class="result" *ngIf="result">
+    <p>C'est la boule {{result.ball.index + 1}} qui est la plus lourde ! Solution trouvée en {{result.round}} itérations.</p>
+  </div>
+</div>
